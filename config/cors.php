@@ -17,18 +17,18 @@ return [
 
     'paths' => ['api/*'],
 
-    'allowed_methods' => ['*'],
+    'allowed_methods' => ['GET',"PUT","POST","OPTIONS"],
 
     'allowed_origins' => ['*'],
 
     'allowed_origins_patterns' => [],
 
-    'allowed_headers' => ['*'],
+    'allowed_headers' => ['authorization',"content-type"],
 
-    'exposed_headers' => ['*'],
+    'exposed_headers' => ['authorization'],
 
     'max_age' => 60,
 
-    'supports_credentials' => false,
+    'supports_credentials' => true,
 
 ];
