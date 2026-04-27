@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Support\Str;
+// use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Log;
+// use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
-use Laravel\Sanctum\PersonalAccessToken;
+// use Laravel\Sanctum\PersonalAccessToken;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
+// use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
@@ -113,16 +113,16 @@ class AuthController extends Controller
         
         // SECURE (manual)
         // $token = $request->bearerToken();
-        // // 5|mUEqxncaO2zLLKtCSlLQoGeoxkS46FkygBItGRdAd7a0ab93
+        // 5|mUEqxncaO2zLLKtCSlLQoGeoxkS46FkygBItGRdAd7a0ab93;
         // $parts = explode('|', $token);
-        // // array:2 [ // app/Http/Controllers/AuthController.php:115
-        // //   0 => "5"
-        // //   1 => "mUEqxncaO2zLLKtCSlLQoGeoxkS46FkygBItGRdAd7a0ab93"
-        // // ]
+        // array:2 [  app/Http/Controllers/AuthController.php:115
+        //   0 => "5"
+        //   1 => "mUEqxncaO2zLLKtCSlLQoGeoxkS46FkygBItGRdAd7a0ab93"
+        // ]
         // $hashedToken = hash('sha256', $parts[1]);
-        // // Cerca il token nel database
+        //  Cerca il token nel database
         // $tokenRecord = PersonalAccessToken::where('token', $hashedToken)->first();
-        // // Recuper l'user
+        // Recuper l'user
         // $user = User::find($tokenRecord->tokenable_id);
         
         // if(!$user){
@@ -130,14 +130,14 @@ class AuthController extends Controller
         // }
         
         // SECURE (con Auth)
-        // if(!$user = Auth::user()){
-        //     return response()->json(['error' =>  ['Unauthorised']]);
-        // }
+        if(!$user = Auth::user()){
+            return response()->json(['error' =>  ['Unauthorised']]);
+        }
 
         // UNSECURE
-        if(!$user = User::find($id)){
-            return response()->json(['error' =>  ['User not found']]);
-        };
+        // if(!$user = User::find($id)){
+        //     return response()->json(['error' =>  ['User not found']]);
+        // };
 
         return response()->json([
             'data' => $user,
